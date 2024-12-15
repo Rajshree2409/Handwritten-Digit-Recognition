@@ -4,7 +4,7 @@ This project is a simple web-based application that allows users to draw a digit
 
 ## Screenshot
 
-![Digit Drawing Application](path/to/your/image.png)
+![Digit Drawing Application](demoImage.png)
 
 ## Key Features
 
