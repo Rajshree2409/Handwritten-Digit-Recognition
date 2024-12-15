@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digit Drawing & Prediction</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Draw a digit (0-9)</h1>
+        
+        <!-- Drawing Canvas -->
+        <canvas id="drawCanvas" width="600" height="400" style="border: 1px solid black;"></canvas>
+        <div class="buttons">
+            <button id="clearButton">Clear</button>
+            <button id="predictButton">Predict</button>
+        </div>
+        
+        <!-- Prediction result -->
+        <div id="predictionResult">
+            <p>Predicted Digit: <span id="predictedDigit">?</span></p>
+        </div>
+    </div>
+
+    <!-- Internal JavaScript -->
+    <script>
+        const canvas = document.getElementById('drawCanvas');
+        const ctx = canvas.getContext('2d');
+        let drawing = false;
+
+        // Start drawing
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseout', stopDrawing);
+
+        // Clear canvas
+        document.getElementById('clearButton').addEventListener('click', clearCanvas);
+
+        // Simulate prediction (replace this with actual backend prediction call)
+        document.getElementById('predictButton').addEventListener('click', predictDigit);
+
+        function startDrawing(event) {
+            drawing = true;
+            ctx.beginPath();
+            ctx.moveTo(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop);
+        }
+
+        function draw(event) {
+            if (!drawing) return;
+            ctx.lineTo(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop);
+            ctx.stroke();
+        }
+
+        function stopDrawing() {
+            drawing = false;
+        }
+
+        function clearCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            document.getElementById('predictedDigit').textContent = '?';  // Reset prediction
+        }
+
+        function predictDigit() {
+            // Here you should capture the drawing, convert it to an image, and send it to your backend.
+            // For now, we'll simulate a prediction with a random digit.
+
+            // Example: Capture the canvas as an image
+            const imageData = canvas.toDataURL('image/png'); 
+
+            // Call your backend API here to get the predicted digit (simulation)
+            const predictedDigit = simulatePrediction(imageData);
+
+            // Display the predicted digit
+            document.getElementById('predictedDigit').textContent = predictedDigit;
+        }
+
+        // Simulate a prediction function (you should replace this with your actual API call)
+        function simulatePrediction(imageData) {
+            // Simulate a random prediction between 0 and 9
+            return Math.floor(Math.random() * 10); 
+        }
+    </script>
+</body>
+</html>

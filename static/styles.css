@@ -1,0 +1,63 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f9;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 320px;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+canvas {
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    background-color: #fff;
+}
+
+.buttons {
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 15px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#predictionResult {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#drawCanvas {
+    touch-action: none; /* Prevent default touch gestures like scrolling */
+    user-select: none;  /* Prevent text selection */
+    background-color: #fff; /* Set a background color if needed */
+}
+  
+  
